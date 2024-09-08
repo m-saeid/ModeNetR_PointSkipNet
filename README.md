@@ -27,7 +27,7 @@ The growing industrial applications of 3D point cloud classification and the dem
 |<br />
 |Confusion matrices_new dataset:<br />
 |--- Confusion matrices of models trained using Modelnet40 are located in this folder.<br />
-<br />
+|<br />
 |Confusion matrices_old dataset:<br />
 |--- The confusion matrices of the models trained using Modelnet40-2 are located in this folder.<br />
 |<br />
