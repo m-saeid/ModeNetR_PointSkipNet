@@ -1,0 +1,1 @@
+python test.py --checkpoint checkpoint/pointMLP-seed-1 --msg seed-1
