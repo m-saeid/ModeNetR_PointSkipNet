@@ -30,10 +30,10 @@ The growing industrial applications of 3D point cloud classification and the dem
 <br />
 |Confusion matrices_old dataset:<br />
 |--- The confusion matrices of the models trained using Modelnet40-2 are located in this folder.<br />
-<br />
+|<br />
 |Creating ModelNet40-2:<br />
 |--- To create the Modelnet40-2 dataset, it is enough to put the "modelnet40_normal_resampled" version of the Modelnet40 dataset in this folder. By running the first two codes of this folder, the resampled version of the Modelnet40-2 dataset will be created, and if you run the third code, the "modelnet40_ply_hdf5_2048" version will also be created.<br />
-<br />
+|<br />
 |Models: <br />
 |--- CurveNet<br />
 |--- DGCNN<br />
@@ -42,14 +42,14 @@ The growing industrial applications of 3D point cloud classification and the dem
 |--- PointMLP<br />
 |--- PointNet<br />
 |--- PointNet++<br />
-<br />
-|Point-SkipNet:
+|<br />
+|Point-SkipNet:<br />
 | --- Our presented model is located in this folder. Despite the good performance, this model has competitive accuracy. (Codes, log file and pre-trained weights of this model are available in this folder)
 <br />
 <br />
 ### The results of the models trained on the Modelnet 2-40 dataset
 <br />
-<br />
+
 |     Model     |       OA      |      mAcc     |   Param(M)    |
 | ------------- | ------------- | ------------- | ------------- |
 | PointNet  | 91.39  | 88.79  | 3.47  |
