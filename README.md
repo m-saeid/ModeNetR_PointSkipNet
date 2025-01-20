@@ -3,7 +3,7 @@
 <p>
 <a href="https://arxiv.org/pdf/2302.14673.pdf">
     <img src="https://img.shields.io/badge/PDF-arXiv-brightgreen" /></a>
-<a href="https://m-saeid.github.io/publications/ModelNet-R.html">
+<a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/">
     <img src="https://img.shields.io/badge/Project-Homepage-red" /></a>
 <a href="https://pytorch.org/">
     <img src="https://img.shields.io/badge/Framework-PyTorch-orange" /></a>
