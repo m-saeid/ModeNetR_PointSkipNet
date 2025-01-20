@@ -12,21 +12,20 @@
 </p>
 
 ## Homepage
-<-- For more information about the project, please refer to our [project homepage](). -->
+<!-- For more information about the project, please refer to our [project homepage](). -->
 The article will be available soon...
 
 ## Prerequisites
-Install all necessary packages using:
-
-```shell
+The latest codes are tested on Ubuntu 22.04.5 LTS, NVIDIA GeForce RTX 3080 Ti, CUDA 12.2, PyTorch 1.13.1+cu117 and Python 3.10.12: 
+<!--```shell
 conda install pytorch==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
 pip install -r requirements.txt
-```
+```-->
 
 ## Data
 Place the following datasets in the data folder. 
->>> data/modelnet40_normal_resampled
->>> data/modelnet40_ply_hdf5_2048
+* data/modelnet40_normal_resampled
+* data/modelnet40_ply_hdf5_2048
 The modelnet40_normal_resampled dataset will be converted to modelnet40_normal_resampled and the h5 format of the dataset will be created after executing the code related to creating the dataset that follows.
 If you need the information of the modelnet40_normal_resampled folder, be sure to make a backup copy. because the content of this folder will change and Modelnet40 will be converted to ModelnetR.
 
