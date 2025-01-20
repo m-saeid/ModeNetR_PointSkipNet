@@ -43,7 +43,7 @@ The modelnet-R dataset is created using the modelnet40_normal_resampled dataset,
 
 ## Train
 
-Creating Refined Dataset(ModeNet-R):
+Train Point-SkipNet from scratch using:
 ```shell
 cd Point-SkipNet
 dataset="modelnetR" bash run_train.sh   # To train on the refined dataset(modeletR)
@@ -53,7 +53,7 @@ dataset="modelnet" bash run_train.sh    # To train on the original dataset(model
 
 ## Test
 
-Test PointSkipNet with checkpoint using:
+Test Point-SkipNet with checkpoint using:
 ```shell
 cd Point-SkipNet
 dataset="modelnetR" bash run_test.sh   # To test on the refined dataset(modeletR)
