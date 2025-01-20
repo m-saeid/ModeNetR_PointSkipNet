@@ -1,4 +1,17 @@
-# modelnet40-2
+# Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet
+
+<p>
+<a href="https://arxiv.org/pdf/2302.14673.pdf">
+    <img src="https://img.shields.io/badge/PDF-arXiv-brightgreen" /></a>
+<a href="https://m-saeid.github.io/publications/ModelNet-R.html">
+    <img src="https://img.shields.io/badge/Project-Homepage-red" /></a>
+<a href="https://pytorch.org/">
+    <img src="https://img.shields.io/badge/Framework-PyTorch-orange" /></a>
+<a href="https://github.com/JunweiZheng93/APES/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" /></a>
+</p>
+
+
 The article will be available soon...
 <br />
 ## ABSTARCT<br /><br />
