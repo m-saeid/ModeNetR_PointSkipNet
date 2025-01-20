@@ -24,15 +24,28 @@ pip install -r requirements.txt
 ```
 
 ## Data
-Download ModelNet Dataset
+Place the following datasets in the data folder. 
+>>> data/modelnet40_normal_resampled
+>>> data/modelnet40_ply_hdf5_2048
+The modelnet40_normal_resampled dataset will be converted to modelnet40_normal_resampled and the h5 format of the dataset will be created after executing the code related to creating the dataset that follows.
+If you need the information of the modelnet40_normal_resampled folder, be sure to make a backup copy. because the content of this folder will change and Modelnet40 will be converted to ModelnetR.
 
+
+## Creating ModelNet-R
+```shell
+cd Creating ModelNet-R
+h5=false bash creat_modelnetR.sh  # if you dont need h5 format of modelnet-R (To run pointskipnet code, it is not necessary to generate h format.)
+h5=true bash creat_modelnetR.sh   # if you need h5 format of modelnet-R
+```
+The modelnet-R dataset is created using the modelnet40_normal_resampled dataset, so if you need to recreate the refined dataset(modelnet-R), you must put the modelnet40_normal_resampled dataset in the data folder.
 
 ## Train
 
-Creatin Refined Dataset(ModeNet-R):
+Creating Refined Dataset(ModeNet-R):
 ```shell
 cd Point-SkipNet
-bash creat_ModelNetR.sh
+dataset="modelnetR" bash run_train.sh   # To run on the refined dataset(modeletR)
+dataset="modelnet" bash run_train.sh    # To run on the original dataset(modelnet)
 ```
 
 
@@ -43,6 +56,8 @@ Train PointSkipNet from scratch using:
 cd Point-SkipNet
 bash run_train.sh
 ```
+>>> on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396
+>>> on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
 
 ## Test
 
@@ -108,7 +123,7 @@ bash run_train.sh
 | DG-CNN  | 94.03  | 92.64  | 1.8  |
 | CurveNet  | 94.12  | 92.65  | 2.04  |
 | PointMLP  | 95.33  | 94.30  | 12.6  |
-| Point-SkipNet(ours)  | 94.33  | 92.93  | 2.9  |
+| Point-SkipNet(ours)  | 94.87  | 93.73  | 2.9  |
 
 ## Citation
 
