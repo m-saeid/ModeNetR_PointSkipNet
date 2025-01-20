@@ -49,23 +49,30 @@ dataset="modelnet" bash run_train.sh    # To run on the original dataset(modelne
 ```
 
 
-## Train
-
-Train PointSkipNet from scratch using:
-```shell
-cd Point-SkipNet
-bash run_train.sh
-```
->>> on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396
->>> on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
-
 ## Test
 
 Test PointSkipNet with checkpoint using:
 ```shell
 cd Point-SkipNet
-bash run_train.sh
+dataset="modelnetR" bash run_test.sh
+dataset="modelnet" bash run_test.sh
 ```
+>> on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396
+>> on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
+
+
+### The results of the models trained on the Modelnet 2-40 dataset
+<br />
+
+|     Model     |       OA      |      mAcc     |   Param(M)    |
+| ------------- | ------------- | ------------- | ------------- |
+| PointNet  | 91.39  | 88.79  | 3.47  |
+| PointNet++ (ssg)  | 94.02  | 92.40  | 1.47  |
+| PointNet++ (msg)  | 94.06  | 91.80  | 1.74  |
+| Point-NN  | 84.75  | 77.65  | 0  |
+| DG-CNN  | 94.03  | 92.64  | 1.8  |
+| CurveNet  | 94.12  | 92.65  | 2.04  |
+| PointMLP  | 95.33  | 94.30  | 12.6  |
 
 
 ## Tree:
@@ -111,18 +118,7 @@ bash run_train.sh
 | --- Our presented model is located in this folder. Despite the good performance, this model has competitive accuracy. (Codes, log file and pre-trained weights of this model are available in this folder)
 <br />
 <br />
-### The results of the models trained on the Modelnet 2-40 dataset
-<br />
 
-|     Model     |       OA      |      mAcc     |   Param(M)    |
-| ------------- | ------------- | ------------- | ------------- |
-| PointNet  | 91.39  | 88.79  | 3.47  |
-| PointNet++ (ssg)  | 94.02  | 92.40  | 1.47  |
-| PointNet++ (msg)  | 94.06  | 91.80  | 1.74  |
-| Point-NN  | 84.75  | 77.65  | 0  |
-| DG-CNN  | 94.03  | 92.64  | 1.8  |
-| CurveNet  | 94.12  | 92.65  | 2.04  |
-| PointMLP  | 95.33  | 94.30  | 12.6  |
 | Point-SkipNet(ours)  | 94.87  | 93.73  | 2.9  |
 
 ## Citation
