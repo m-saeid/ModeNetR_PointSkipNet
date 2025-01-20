@@ -35,7 +35,7 @@ If you need the information of the modelnet40_normal_resampled folder, be sure t
 
 ## Creating ModelNet-R
 ```shell
-cd Creating ModelNet-R
+cd Creating_ModelNet-R
 h5=false bash creat_modelnetR.sh  # if you dont need h5 format of modelnet-R (To run Point-SkipNet code, it is not necessary to generate h5 format.)
 h5=true bash creat_modelnetR.sh   # if you need h5 format of modelnet-R
 ```
