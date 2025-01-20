@@ -17,8 +17,8 @@ The article will be available soon...
 
 ## Prerequisites
 The latest codes are tested on:<br />
-*Ubuntu 22.04.3 LTS, NVIDIA GeForce RTX 2080 Ti, CUDA 12.0, PyTorch 2.1.1+cu121 and Python 3.10.12<br />
-Ubuntu 22.04.5 LTS, NVIDIA GeForce RTX 3080 Ti, CUDA 12.2, PyTorch 1.13.1+cu117 and Python 3.10.12
+* Ubuntu 22.04.3 LTS, NVIDIA GeForce RTX 2080 Ti, CUDA 12.0, PyTorch 2.1.1+cu121 and Python 3.10.12<br />
+* Ubuntu 22.04.5 LTS, NVIDIA GeForce RTX 3080 Ti, CUDA 12.2, PyTorch 1.13.1+cu117 and Python 3.10.12
 <!--```shell
 conda install pytorch==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
 pip install -r requirements.txt
@@ -36,7 +36,7 @@ If you need the information of the modelnet40_normal_resampled folder, be sure t
 ## Creating ModelNet-R
 ```shell
 cd Creating ModelNet-R
-h5=false bash creat_modelnetR.sh  # if you dont need h5 format of modelnet-R (To run pointskipnet code, it is not necessary to generate h format.)
+h5=false bash creat_modelnetR.sh  # if you dont need h5 format of modelnet-R (To run Point-SkipNet code, it is not necessary to generate h5 format.)
 h5=true bash creat_modelnetR.sh   # if you need h5 format of modelnet-R
 ```
 The modelnet-R dataset is created using the modelnet40_normal_resampled dataset, so if you need to recreate the refined dataset(modelnet-R), you must put the modelnet40_normal_resampled dataset in the data folder.
@@ -46,8 +46,8 @@ The modelnet-R dataset is created using the modelnet40_normal_resampled dataset,
 Creating Refined Dataset(ModeNet-R):
 ```shell
 cd Point-SkipNet
-dataset="modelnetR" bash run_train.sh   # To run on the refined dataset(modeletR)
-dataset="modelnet" bash run_train.sh    # To run on the original dataset(modelnet)
+dataset="modelnetR" bash run_train.sh   # To train on the refined dataset(modeletR)
+dataset="modelnet" bash run_train.sh    # To train on the original dataset(modelnet)
 ```
 
 
@@ -56,15 +56,15 @@ dataset="modelnet" bash run_train.sh    # To run on the original dataset(modelne
 Test PointSkipNet with checkpoint using:
 ```shell
 cd Point-SkipNet
-dataset="modelnetR" bash run_test.sh
-dataset="modelnet" bash run_test.sh
+dataset="modelnetR" bash run_test.sh   # To test on the refined dataset(modeletR)
+dataset="modelnet" bash run_test.sh    # To test on the original dataset(modelnet)
 ```
-* on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396
- on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
+* on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396<br />
+* on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
 <br />
 
 
-### The results of the models trained on the Modelnet 2-40 dataset
+### The results of the models trained on the ModelNet-R dataset
 <br />
 
 |     Model     |       OA      |      mAcc     |   Param(M)    |
@@ -80,50 +80,6 @@ dataset="modelnet" bash run_test.sh
 
 <br />
 <br />
-
-## Tree:
-|<br />
-|Ablation studies: <br />
-|-- We performed ablation studies on two techniques;<br />
-|--- Data augmentation:<br />
-|------ No augmentation<br />
-|------ All augmentations<br />
-|------ anisotropic_scaling<br />
-|------ jitter<br />
-|------ rotation<br />
-|------ translation<br />
-|--- Skip Connection:<br />
-|------ Concatenation<br />
-|------ Plus<br />
-|<br />
-|-- Ablation studies were performed on three systems with three different graphics cards(Codes and log files of ablation studies are available in the following folders):<br />
-|---- Nvidia GeForce GTX 1080: Although our goal was to study the PointSkipNet model on the new dataset i.e. Modelnet 40-2, but for the possibility of some interesting results, we also conducted studies on the old dataset i.e. Modelnet 40.<br />
-|---- Nvidia GeForce GTX 2080: Conducting studies on the PointSkipNet model using the new dataset, Modelnet 40-2<br />
-|---- Nvidia GeForce GTX 3080: Conducting studies on the PointSkipNet model using the new dataset, Modelnet 40-2<br />
-|<br />
-|<br />
-|Confusion matrices_new dataset:<br />
-|--- Confusion matrices of models trained using Modelnet40 are located in this folder.<br />
-|<br />
-|Confusion matrices_old dataset:<br />
-|--- The confusion matrices of the models trained using Modelnet40-2 are located in this folder.<br />
-|<br />
-|Creating ModelNet40-2:<br />
-|--- To create the Modelnet40-2 dataset, it is enough to put the "modelnet40_normal_resampled" version of the Modelnet40 dataset in this folder. By running the first two codes of this folder, the resampled version of the Modelnet40-2 dataset will be created, and if you run the third code, the "modelnet40_ply_hdf5_2048" version will also be created.<br />
-|<br />
-|Models: <br />
-|--- CurveNet<br />
-|--- DGCNN<br />
-|--- Point-SkipNet<br />
-|--- Point-NN<br />
-|--- PointMLP<br />
-|--- PointNet<br />
-|--- PointNet++<br />
-|<br />
-|Point-SkipNet:<br />
-| --- Our presented model is located in this folder. Despite the good performance, this model has competitive accuracy. (Codes, log file and pre-trained weights of this model are available in this folder)
-<br />
-
 
 ## Citation
 
