@@ -27,7 +27,8 @@ pip install -r requirements.txt
 ## Data
 Place the following datasets in the data folder. 
 * data/modelnet40_normal_resampled
-* data/modelnet40_ply_hdf5_2048<br />
+* data/modelnet40_ply_hdf5_2048
+<br />
 The "modelnet40_normal_resampled" dataset will be converted to "modelnetR_normal_resampled" and the h5 format of the dataset will be created after executing the code related to creating the dataset that follows.
 If you need the information of the modelnet40_normal_resampled folder, be sure to make a backup copy. because the content of this folder will change and Modelnet40 will be converted to ModelnetR.
 
@@ -92,3 +93,11 @@ booktitle={Ipria},
 year={2025}
 }
 ```
+
+## Acknowledgements
+
+This project builds upon the foundation of the following repository:
+- [Pointnet++ Implementation](https://github.com/yanx27/Pointnet_Pointnet2_pytorch) by yanx27
+
+Their work provided a crucial starting point for developing my deep learning model for point cloud analysis. I have made significant modifications and additions to tailor the implementation to the specific needs of this project. I appreciate the original authors’ efforts and contributions to the community.
+
