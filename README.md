@@ -11,11 +11,47 @@
     <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" /></a>
 </p>
 
-
+## Homepage
+<-- For more information about the project, please refer to our [project homepage](). -->
 The article will be available soon...
-<br />
-## ABSTARCT<br /><br />
-The growing industrial applications of 3D point cloud classification and the demand for high accuracy have spurred extensive research, leading to the development of various learning models. Graph-based models, in particular, excel in modeling relationships and dependencies between points, addressing key challenges in this domain. However, existing research predominantly relies on a limited number of datasets for training and evaluation. This study focuses on the ModelNet40 dataset, which comprises 40 classes of diverse objects. Through a thorough examination of this dataset, identified issues are addressed, and solutions are proposed. The dataset is refined, and several learning models are trained and evaluated using this enhanced dataset. Additionally, we introduce Point-SkipNet, a lightweight graph-based neural network model that achieves high accuracy while maintaining efficiency. Results indicate that the refined dataset offers superior quality compared to the original, and the proposed model demonstrates competitive performance against more complex models. All code, results, and log files are publicly available.
+
+## Prerequisites
+Install all necessary packages using:
+
+```shell
+conda install pytorch==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
+pip install -r requirements.txt
+```
+
+## Data
+Download ModelNet Dataset
+
+
+## Train
+
+Creatin Refined Dataset(ModeNet-R):
+```shell
+cd Point-SkipNet
+bash creat_ModelNetR.sh
+```
+
+
+## Train
+
+Train PointSkipNet from scratch using:
+```shell
+cd Point-SkipNet
+bash run_train.sh
+```
+
+## Test
+
+Test PointSkipNet with checkpoint using:
+```shell
+cd Point-SkipNet
+bash run_train.sh
+```
+
 
 ## Tree:
 |<br />
@@ -74,3 +110,15 @@ The growing industrial applications of 3D point cloud classification and the dem
 | PointMLP  | 95.33  | 94.30  | 12.6  |
 | Point-SkipNet(ours)  | 94.33  | 92.93  | 2.9  |
 
+## Citation
+
+If you are interested in this work, please cite as below:
+
+```text
+@modenetr{aaaa2025,
+author={names},
+title={Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet},
+booktitle={Ipria},
+year={2025}
+}
+```
