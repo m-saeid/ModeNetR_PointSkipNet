@@ -13,7 +13,7 @@
 
 ## Homepage
 <!-- For more information about the project, please refer to our [project homepage](). -->
-The article will be available soon...
+The paper will be available soon...
 
 ## Prerequisites
 The latest codes are tested on:<br />
