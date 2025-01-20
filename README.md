@@ -16,8 +16,8 @@
 The article will be available soon...
 
 ## Prerequisites
-The latest codes are tested on:
-Ubuntu 22.04.3 LTS, NVIDIA GeForce RTX 2080 Ti, CUDA 12.0, PyTorch 2.1.1+cu121 and Python 3.10.12
+The latest codes are tested on:<br />
+*Ubuntu 22.04.3 LTS, NVIDIA GeForce RTX 2080 Ti, CUDA 12.0, PyTorch 2.1.1+cu121 and Python 3.10.12<br />
 Ubuntu 22.04.5 LTS, NVIDIA GeForce RTX 3080 Ti, CUDA 12.2, PyTorch 1.13.1+cu117 and Python 3.10.12
 <!--```shell
 conda install pytorch==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
