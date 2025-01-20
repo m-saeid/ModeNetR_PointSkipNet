@@ -96,8 +96,10 @@ year={2025}
 
 ## Acknowledgements
 
-This project builds upon the foundation of the following repository:
-- [Pointnet++ Implementation](https://github.com/yanx27/Pointnet_Pointnet2_pytorch) by yanx27
+This project builds upon the foundation of excellent prior work from the research community. Key contributions include:
 
-Their work provided a crucial starting point for developing my deep learning model for point cloud analysis. I have made significant modifications and additions to tailor the implementation to the specific needs of this project. I appreciate the original authors’ efforts and contributions to the community.
+- **Pointnet++**: [Pointnet++ paper](https://arxiv.org/pdf/1706.02413) by Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas
+- **Repository**: [Pointnet++ Implementation](https://github.com/yanx27/Pointnet_Pointnet2_pytorch) by yanx27
+- **Dataset**: Modifications to the [Modelnet40 dataset](https://modelnet.cs.princeton.edu/), originally presented in [3D ShapeNets: A Deep Representation for Volumetric Shapes paper](https://openaccess.thecvf.com/content_cvpr_2015/papers/Wu_3D_ShapeNets_A_2015_CVPR_paper.pdf) by Wu, Zhirong, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao
 
+We recognize and appreciate the efforts of these original authors and contributors, without whom this project would not have been possible.
