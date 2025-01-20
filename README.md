@@ -16,7 +16,9 @@
 The article will be available soon...
 
 ## Prerequisites
-The latest codes are tested on Ubuntu 22.04.5 LTS, NVIDIA GeForce RTX 3080 Ti, CUDA 12.2, PyTorch 1.13.1+cu117 and Python 3.10.12: 
+The latest codes are tested on:
+Ubuntu 22.04.3 LTS, NVIDIA GeForce RTX 2080 Ti, CUDA 12.0, PyTorch 2.1.1+cu121 and Python 3.10.12
+Ubuntu 22.04.5 LTS, NVIDIA GeForce RTX 3080 Ti, CUDA 12.2, PyTorch 1.13.1+cu117 and Python 3.10.12
 <!--```shell
 conda install pytorch==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
 pip install -r requirements.txt
@@ -26,6 +28,7 @@ pip install -r requirements.txt
 Place the following datasets in the data folder. 
 * data/modelnet40_normal_resampled
 * data/modelnet40_ply_hdf5_2048
+<br />
 The modelnet40_normal_resampled dataset will be converted to modelnet40_normal_resampled and the h5 format of the dataset will be created after executing the code related to creating the dataset that follows.
 If you need the information of the modelnet40_normal_resampled folder, be sure to make a backup copy. because the content of this folder will change and Modelnet40 will be converted to ModelnetR.
 
@@ -56,8 +59,9 @@ cd Point-SkipNet
 dataset="modelnetR" bash run_test.sh
 dataset="modelnet" bash run_test.sh
 ```
->> on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396
->> on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
+* on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396
+ on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
+<br />
 
 
 ### The results of the models trained on the Modelnet 2-40 dataset
@@ -72,7 +76,10 @@ dataset="modelnet" bash run_test.sh
 | DG-CNN  | 94.03  | 92.64  | 1.8  |
 | CurveNet  | 94.12  | 92.65  | 2.04  |
 | PointMLP  | 95.33  | 94.30  | 12.6  |
+| Point-SkipNet(proposed)  | 94.87  | 93.73  | 2.9  |
 
+<br />
+<br />
 
 ## Tree:
 |<br />
@@ -116,9 +123,7 @@ dataset="modelnet" bash run_test.sh
 |Point-SkipNet:<br />
 | --- Our presented model is located in this folder. Despite the good performance, this model has competitive accuracy. (Codes, log file and pre-trained weights of this model are available in this folder)
 <br />
-<br />
 
-| Point-SkipNet(ours)  | 94.87  | 93.73  | 2.9  |
 
 ## Citation
 
