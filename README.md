@@ -15,6 +15,8 @@
 <!-- For more information about the project, please refer to our [project homepage](). -->
 The paper will be available soon...
 
+![image info](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/ModelNetR_PointSkipNet.jpg)
+
 ## Prerequisites
 The latest codes are tested on:<br />
 * Ubuntu 22.04.3 LTS, NVIDIA GeForce RTX 2080 Ti, CUDA 12.0, PyTorch 2.1.1+cu121 and Python 3.10.12<br />
