@@ -27,8 +27,7 @@ pip install -r requirements.txt
 ## Data
 Place the following datasets in the data folder. 
 * data/modelnet40_normal_resampled
-* data/modelnet40_ply_hdf5_2048
-<br />
+* data/modelnet40_ply_hdf5_2048<br />
 The modelnet40_normal_resampled dataset will be converted to modelnet40_normal_resampled and the h5 format of the dataset will be created after executing the code related to creating the dataset that follows.
 If you need the information of the modelnet40_normal_resampled folder, be sure to make a backup copy. because the content of this folder will change and Modelnet40 will be converted to ModelnetR.
 
