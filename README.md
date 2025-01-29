@@ -1,7 +1,7 @@
 # Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet
 
 <p>
-<a href="https://arxiv.org/pdf/2302.14673.pdf">
+<a href="https://arxiv.org">
     <img src="https://img.shields.io/badge/PDF-arXiv-brightgreen" /></a>
 <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/">
     <img src="https://img.shields.io/badge/Project-Homepage-red" /></a>
