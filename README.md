@@ -78,7 +78,7 @@ dataset="modelnet" bash run_test.sh    # To test on the original dataset(modelne
 | DG-CNN  | 94.03  | 92.64  | 1.8  |
 | CurveNet  | 94.12  | 92.65  | 2.04  |
 | PointMLP  | 95.33  | 94.30  | 12.6  |
-| Point-SkipNet(proposed)  | 94.87  | 93.73  | 2.9  |
+| Point-SkipNet(proposed)  | 95.03  | 94.07  | 2.9  |
 
 <br />
 <br />
