@@ -35,6 +35,10 @@ The "modelnet40_normal_resampled" dataset will be converted to "modelnetR_normal
 If you need the information of the modelnet40_normal_resampled folder, be sure to make a backup copy. because the content of this folder will change and Modelnet40 will be converted to ModelnetR.
 
 
+## Inconsistency in ModelNet40 Method Performance
+The performance of nearly all methods on ModelNet40 lacks consistency, as indicated by ([CVMI-Lab/PAConv#9 (comment)(https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422)](https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422)). Running the same codes multiple times yields varying results, even with a fixed seed.
+
+
 ## Creating ModelNet-R
 ```shell
 cd Creating_ModelNet-R
