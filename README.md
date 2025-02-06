@@ -13,7 +13,8 @@
 
 ## Homepage
 <!-- For more information about the project, please refer to our [project homepage](). -->
-Official implementation of the paper "Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet", accepted as an Oral presentation at IPRIA 2025 🔥
+Official implementation of the paper "Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet",</p>
+## accepted as an Oral presentation at IPRIA 2025 🔥
 <br />The paper will be available soon...
 
 ![image info](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/ModelNetR_PointSkipNet.jpg)
