@@ -1,4 +1,8 @@
-# Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet
+Below is a comprehensive, visually appealing, and coherent README.md that integrates key points from the paper along with all the provided links and images. You can copy and paste this directly into your repository.
+
+---
+
+# Enhancing 3D Point Cloud Classification with ModelNet‑R and Point‑SkipNet
 
 <p align="center">
   <a href="https://arxiv.org/link_paper">
@@ -20,47 +24,95 @@
 
 ## Overview
 
-This repository contains the official implementation of the paper **"Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet,"** accepted for oral presentation at **IPRIA 2025**. The paper will be available soon on [arXiv](https://arxiv.org/link_paper).
+3D point cloud classification is pivotal in applications like autonomous driving, robotics, and augmented reality. However, existing benchmarks such as ModelNet40 suffer from inconsistent labeling, the presence of 2D data, size mismatches, and ambiguous class definitions.
 
-### Key Challenges in ModelNet40
+**Our contributions:**
+- **ModelNet‑R Dataset:** A refined version of ModelNet40 that resolves labeling inconsistencies, removes low-quality (almost 2D) data, adjusts size disparities, and sharpens class boundaries.
+- **Point‑SkipNet:** A lightweight graph‑based neural network that leverages efficient sampling, neighborhood grouping, and skip connections to achieve state‑of‑the‑art classification accuracy with a reduced computational footprint.
+
+For full details, please refer to the [paper on arXiv](https://arxiv.org/link_paper).
+
+---
+
+## Problem Statement: Limitations of ModelNet40
 
 <p align="center">
-  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg" width="500px" alt="ModelNet Problems"/>
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg" width="500px" alt="Challenges in ModelNet40"/>
 </p>
 
-The performance of nearly all methods on ModelNet40 lacks consistency. Running the same code multiple times can yield varying results, even with a fixed seed. More details are discussed in [this issue](https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422).
+ModelNet40, while widely used, contains:
+- **Inconsistent labeling:** Many samples are mislabeled or ambiguous.
+- **2D artifacts:** A significant portion of the data is nearly flat, lacking volumetric depth.
+- **Size mismatches:** Normalization often causes objects of different real-world scales to appear similar.
+- **Poor class differentiation:** Similar geometries between classes (e.g., flower pot vs. vase) lead to confusion.
 
-### Proposed Solution: Point-SkipNet
+---
 
+## Proposed Solution: ModelNet‑R & Point‑SkipNet
+
+### Introducing ModelNet‑R
+By addressing the issues of ModelNet40, ModelNet‑R provides a cleaner and more reliable benchmark for 3D point cloud research. It improves both the training process and the evaluation of classification models.
+
+### Lightweight Classification with Point‑SkipNet
 <p align="center">
-  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg" width="500px" alt="Point-SkipNet"/>
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg" width="500px" alt="Point‑SkipNet"/>
 </p>
 
-Our proposed **Point-SkipNet** enhances classification accuracy by leveraging a lightweight positional encoding mechanism. This significantly improves performance on the **ModelNet-R** dataset, a refined version of ModelNet40.
+Point‑SkipNet is designed to:
+- **Efficiently sample and group points** using a dedicated module.
+- **Leverage skip connections** to preserve both global and local features.
+- **Reduce computational overhead** while maintaining high classification accuracy.
 
 ### Architecture Overview
-
 <p align="center">
-  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg" width="500px" alt="Point-SkipNet Overview"/>
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg" width="500px" alt="Architecture Overview"/>
 </p>
 
-## Prerequisites
+The architecture is modular:
+- **Sample and Group Module:** Uses farthest point sampling (FPS) and ball queries to extract meaningful local neighborhoods.
+- **Feature Aggregation:** Combines local geometric features with skip connections for robust global representation.
 
-The code has been tested on the following configurations:
+<p align="center">
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg" width="500px" alt="Sample and Group Module"/>
+</p>
 
-- **Configuration 1**:
+---
+
+## Experimental Insights
+
+Experiments demonstrate that refining the dataset (ModelNet‑R) coupled with the efficient design of Point‑SkipNet results in significant performance improvements. For instance:
+
+- **Point‑SkipNet on ModelNet:**  
+  - Overall Accuracy (OA): ~92.29%  
+  - Mean Class Accuracy (mAcc): ~89.84%
+
+- **Point‑SkipNet on ModelNet‑R:**  
+  - Overall Accuracy (OA): ~94.33%  
+  - Mean Class Accuracy (mAcc): ~92.93%
+
+These results underscore the importance of both dataset quality and computational efficiency.
+
+---
+
+## Prerequisites & Setup
+
+Tested configurations include:
+
+- **Configuration 1:**
   - OS: Ubuntu 22.04.3 LTS
   - GPU: NVIDIA GeForce RTX 2080 Ti
   - CUDA: 12.0
   - PyTorch: 2.1.1+cu121
   - Python: 3.10.12
 
-- **Configuration 2**:
+- **Configuration 2:**
   - OS: Ubuntu 22.04.5 LTS
   - GPU: NVIDIA GeForce RTX 3080 Ti
   - CUDA: 12.2
   - PyTorch: 1.13.1+cu117
   - Python: 3.10.12
+
+---
 
 ## Data Preparation
 
@@ -69,66 +121,91 @@ Place the following datasets in the `data` folder:
 - `data/modelnet40_normal_resampled`
 - `data/modelnet40_ply_hdf5_2048`
 
-**Note**: The `modelnet40_normal_resampled` dataset will be converted to `modelnetR_normal_resampled` after executing the dataset creation script. If you need the original `modelnet40_normal_resampled` data, please make a backup, as its content will change during the conversion to ModelNet-R.
+> **Note:** The `modelnet40_normal_resampled` dataset will be converted to `modelnetR_normal_resampled` when you run the dataset creation script. It is recommended to back up the original data if needed.
 
-### Sample and Grouping Strategy
+---
 
-<p align="center">
-  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg" width="500px" alt="Sample and Grouping"/>
-</p>
+## Creating ModelNet‑R
 
-## Creating ModelNet-R
-
-To create the ModelNet-R dataset:
+To generate the refined dataset:
 
 ```bash
 cd Creating_ModelNet-R
-h5=false bash creat_modelnetR.sh  # If you don't need the h5 format of ModelNet-R
-h5=true bash creat_modelnetR.sh   # If you need the h5 format of ModelNet-R
+h5=false bash creat_modelnetR.sh  # Use this if you do not require the h5 format
+h5=true bash creat_modelnetR.sh   # Use this if you require the h5 format
 ```
 
-**Note**: The ModelNet-R dataset is created using the `modelnet40_normal_resampled` dataset. Ensure this dataset is in the `data` folder before running the script.
+Ensure that the `modelnet40_normal_resampled` dataset is present in the `data` folder before running the script.
 
-## Training Point-SkipNet
+---
 
-To train Point-SkipNet from scratch:
+## Training & Testing Point‑SkipNet
+
+### Training
+
+Train Point‑SkipNet on your chosen dataset:
 
 ```bash
 cd Point-SkipNet
-dataset="modelnetR" bash run_train.sh   # To train on the refined dataset (ModelNet-R)
-dataset="modelnet" bash run_train.sh    # To train on the original dataset (ModelNet)
+dataset="modelnetR" bash run_train.sh   # Train on ModelNet‑R (refined dataset)
+dataset="modelnet" bash run_train.sh    # Train on ModelNet (original dataset)
 ```
 
-## Testing Point-SkipNet
+### Testing
 
-To test Point-SkipNet with a checkpoint:
+Test the trained model using the provided checkpoints:
 
 ```bash
 cd Point-SkipNet
-dataset="modelnetR" bash run_test.sh   # To test on the refined dataset (ModelNet-R)
-dataset="modelnet" bash run_test.sh    # To test on the original dataset (ModelNet)
+dataset="modelnetR" bash run_test.sh   # Test on ModelNet‑R
+dataset="modelnet" bash run_test.sh    # Test on ModelNet
 ```
+
+---
 
 ## Citation
 
-If you find this work useful, please cite:
+If you use this work, please cite:
 
 ```bibtex
 @inproceedings{your2025paper,
-  author    = {Your Name and Co-author Name},
+  author    = {Mohammad Saeid and Amir Salarpour and Pedram MohajerAnsari},
   title     = {Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet},
-  booktitle = {Proceedings of the IPRIA 2025},
+  booktitle = {Proceedings of IPRIA 2025},
   year      = {2025},
 }
 ```
 
+---
+
 ## Acknowledgements
 
-This project builds upon the foundation of excellent prior work from the research community. Key contributions include:
+This project builds upon the valuable contributions of the research community. Special thanks to:
 
-- **PointNet++**: [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](https://arxiv.org/pdf/1706.02413) by Charles R. Qi, Li Yi, Hao Su, and Leonidas J. Guibas
-- **Implementation**: [PointNet++ PyTorch Implementation](https://github.com/yanx27/Pointnet_Pointnet2_pytorch) by yanx27
-- **Dataset**: Modifications to the [ModelNet40 dataset](https://modelnet.cs.princeton.edu/), originally presented in [3D ShapeNets: A Deep Representation for Volumetric Shapes](https://openaccess.thecvf.com/content_cvpr_2015/papers/Wu_3D_ShapeNets_A_2015_CVPR_paper.pdf) by Wu et al.
+- **PointNet++**  
+  [Deep Hierarchical Feature Learning on Point Sets in a Metric Space](https://arxiv.org/pdf/1706.02413) by Qi et al.
 
-We recognize and appreciate the efforts of these original authors and contributors, without whom this project would not have been possible.
+- **PointNet++ PyTorch Implementation**  
+  [Repository by yanx27](https://github.com/yanx27/Pointnet_Pointnet2_pytorch)
 
+- **ModelNet Dataset**  
+  Originally presented in [3D ShapeNets: A Deep Representation for Volumetric Shapes](https://openaccess.thecvf.com/content_cvpr_2015/papers/Wu_3D_ShapeNets_A_2015_CVPR_paper.pdf)
+
+We also acknowledge all related works cited in the paper for inspiring this study.
+
+---
+
+## Future Work
+
+Future enhancements include:
+- Refining all classes in ModelNet40 for uniform consistency.
+- Incorporating techniques to retain size-related features lost during normalization.
+- Extending validations of Point‑SkipNet to additional real‑world datasets such as ScanObjectNN and ShapeNet.
+
+---
+
+This repository offers an integrated approach to improve both dataset quality and model efficiency for 3D point cloud classification. Enjoy exploring the project, and feel free to reach out through the [project homepage](https://github.com/m-saeid/ModeNetR_PointSkipNet/) for any inquiries!
+
+---
+
+Feel free to adjust any sections as needed. Enjoy your new, eye‑catching README!
