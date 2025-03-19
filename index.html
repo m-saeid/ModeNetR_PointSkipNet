@@ -32,35 +32,10 @@
     .hero p { font-size: 1.3em; }
     section { padding: 60px 20px; max-width: 1000px; margin: 20px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     section h2 { text-align: center; margin-bottom: 40px; font-size: 2em; }
-    .overview-container { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-    .overview-container img { width: 350px; height: auto; border-radius: 5px; }
     figure { text-align: center; margin: 30px 0; }
     figure img { max-width: 80%; height: auto; border-radius: 4px; }
-    .small-image img { width: 50%; }
-    figure figcaption { margin-top: 10px; font-size: 0.95em; color: #555; }
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px auto; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-    /* Beautiful Resource Cards */
-    .resource-container {
-      display: flex; 
-      justify-content: space-around; 
-      flex-wrap: wrap; 
-      gap: 20px; 
-      text-align: center; 
-    }
-    .resource-card {
-      background: #fff; 
-      border-radius: 8px; 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-      padding: 20px; 
-      width: 300px; 
-      transition: transform 0.3s;
-    }
-    .resource-card:hover { transform: translateY(-5px); }
-    .resource-card img { width: 80px; margin-bottom: 10px; }
-    .resource-card h3 { font-size: 1.4em; margin-bottom: 10px; }
-    .resource-card a { text-decoration: none; color: #007acc; font-weight: bold; }
-    .resource-card a:hover { text-decoration: underline; }
     footer { text-align: center; padding: 20px; background: #1e1e1e; color: #fff; font-size: 0.9em; }
     @media (max-width: 768px) { .overview-container { flex-direction: column; text-align: center; } }
   </style>
@@ -74,6 +49,9 @@
          <li><a href="#video">Video</a></li>
          <li><a href="#challenges">Challenges</a></li>
          <li><a href="#solution">Solution</a></li>
+         <li><a href="#dataset">Dataset</a></li>
+         <li><a href="#training">Training & Testing</a></li>
+         <li><a href="#experiments">Experiments</a></li>
          <li><a href="#resources">Resources</a></li>
       </ul>
     </nav>
@@ -88,13 +66,8 @@
 
   <section id="overview">
     <h2>Overview</h2>
-    <div class="overview-container">
-      <div>
-        <p><strong>ModelNet-R</strong> refines the widely used ModelNet40 dataset by resolving labeling inconsistencies, removing 2D-like data, and improving size normalization.</p>
-        <p><strong>Point-SkipNet</strong> is a lightweight yet powerful 3D classification model that enhances feature extraction using skip connections.</p>
-      </div>
-      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg?raw=true" alt="Point-SkipNet Overview">
-    </div>
+    <p><strong>ModelNet-R</strong> refines the ModelNet40 dataset by resolving inconsistencies, removing 2D-like data, and improving size normalization.</p>
+    <p><strong>Point-SkipNet</strong> is a lightweight yet powerful 3D classification model that enhances feature extraction using skip connections.</p>
   </section>
 
   <section id="video">
@@ -104,22 +77,58 @@
     </div>
   </section>
 
+  <section id="challenges">
+    <h2>Challenges in ModelNet40</h2>
+    <ul>
+      <li>Inconsistent labeling and ambiguous class definitions</li>
+      <li>Presence of nearly 2D objects lacking volumetric depth</li>
+      <li>Size mismatches causing classification confusion</li>
+    </ul>
+  </section>
+
+  <section id="solution">
+    <h2>Our Solution: ModelNet‑R & Point‑SkipNet</h2>
+    <p>We introduce:</p>
+    <ol>
+      <li><strong>ModelNet‑R Dataset:</strong> A refined dataset with corrected labels, removal of 2D artifacts, and enhanced class differentiation.</li>
+      <li><strong>Point‑SkipNet Architecture:</strong> A lightweight, graph‑based neural network using sampling, grouping, and skip connections.</li>
+    </ol>
+  </section>
+
+  <section id="dataset">
+    <h2>Dataset</h2>
+    <p>Place these datasets in the `data` folder:</p>
+    <ul>
+      <li>data/modelnet40_normal_resampled</li>
+      <li>data/modelnet40_ply_hdf5_2048</li>
+    </ul>
+  </section>
+
+  <section id="training">
+    <h2>Training & Testing</h2>
+    <p>Train Point-SkipNet from scratch:</p>
+    <pre><code>cd Point-SkipNet
+dataset="modelnetR" bash run_train.sh</code></pre>
+    <p>Test with a trained checkpoint:</p>
+    <pre><code>cd Point-SkipNet
+dataset="modelnetR" bash run_test.sh</code></pre>
+  </section>
+
+  <section id="experiments">
+    <h2>Experimental Results</h2>
+    <p>Accuracy on datasets:</p>
+    <ul>
+      <li>ModelNet: OA ~92.29%, mAcc ~89.84%</li>
+      <li>ModelNet-R: OA ~94.33%, mAcc ~92.93%</li>
+    </ul>
+  </section>
+
   <section id="resources">
     <h2>Resources</h2>
-    <div class="resource-container">
-      <div class="resource-card">
-        <img src="https://img.shields.io/badge/Paper-arXiv-brightgreen" alt="Paper">
-        <h3>Read the Paper</h3>
-        <p>Explore the full methodology in our publication.</p>
-        <a href="https://arxiv.org/link_paper" target="_blank">📄 View Paper</a>
-      </div>
-      <div class="resource-card">
-        <img src="https://img.shields.io/badge/Project-Homepage-red" alt="Project Homepage">
-        <h3>GitHub Repository</h3>
-        <p>Access the code, dataset, and documentation.</p>
-        <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/tree/main" target="_blank">📂 Visit GitHub</a>
-      </div>
-    </div>
+    <ul>
+      <li><a href="https://arxiv.org/link_paper" target="_blank">📄 Read the Paper</a></li>
+      <li><a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/tree/main" target="_blank">📂 GitHub Repository</a></li>
+    </ul>
   </section>
 
   <footer>
