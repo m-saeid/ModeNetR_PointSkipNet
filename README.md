@@ -1,7 +1,3 @@
-Below is a comprehensive, visually appealing, and coherent README.md that integrates key points from the paper along with all the provided links and images. You can copy and paste this directly into your repository.
-
----
-
 # Enhancing 3D Point Cloud Classification with ModelNet‑R and Point‑SkipNet
 
 <p align="center">
@@ -31,6 +27,14 @@ Below is a comprehensive, visually appealing, and coherent README.md that integr
 - **Point‑SkipNet:** A lightweight graph‑based neural network that leverages efficient sampling, neighborhood grouping, and skip connections to achieve state‑of‑the‑art classification accuracy with a reduced computational footprint.
 
 For full details, please refer to the [paper on arXiv](https://arxiv.org/link_paper).
+
+---
+
+## Homepage
+<!-- For more information about the project, please refer to our [project homepage](). -->
+Official implementation of the paper "Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet",</p>
+### accepted as an Oral presentation at IPRIA 2025 🔥
+<br />The paper will be available soon...
 
 ---
 
@@ -112,6 +116,10 @@ Tested configurations include:
   - PyTorch: 1.13.1+cu117
   - Python: 3.10.12
 
+<!--```shell
+conda install pytorch==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
+pip install -r requirements.txt
+```-->
 ---
 
 ## Data Preparation
@@ -163,12 +171,29 @@ dataset="modelnet" bash run_test.sh    # Test on ModelNet
 
 ---
 
+### The results of the models trained on the ModelNet-R dataset
+<br />
+
+|     Model     |       OA      |      mAcc     |   Param(M)    |
+| ------------- | ------------- | ------------- | ------------- |
+| PointNet  | 91.39  | 88.79  | 3.47  |
+| PointNet++ (ssg)  | 94.02  | 92.40  | 1.47  |
+| PointNet++ (msg)  | 94.06  | 91.80  | 1.74  |
+| Point-NN  | 84.75  | 77.65  | 0  |
+| DG-CNN  | 94.03  | 92.64  | 1.8  |
+| CurveNet  | 94.12  | 92.65  | 2.04  |
+| PointMLP  | 95.33  | 94.30  | 12.6  |
+| Point-SkipNet(proposed)  | 94.33  | 92.93  | 1.47  |
+
+<br />
+<br />
+
 ## Citation
 
 If you use this work, please cite:
 
 ```bibtex
-@inproceedings{your2025paper,
+@inproceedings{2025paper,
   author    = {Mohammad Saeid and Amir Salarpour and Pedram MohajerAnsari},
   title     = {Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet},
   booktitle = {Proceedings of IPRIA 2025},
@@ -205,7 +230,3 @@ Future enhancements include:
 ---
 
 This repository offers an integrated approach to improve both dataset quality and model efficiency for 3D point cloud classification. Enjoy exploring the project, and feel free to reach out through the [project homepage](https://github.com/m-saeid/ModeNetR_PointSkipNet/) for any inquiries!
-
----
-
-Feel free to adjust any sections as needed. Enjoy your new, eye‑catching README!
