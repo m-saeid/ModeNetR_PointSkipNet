@@ -24,19 +24,25 @@ This repository contains the official implementation of the paper **"Enhancing 3
 
 ### Key Challenges in ModelNet40
 
-![ModelNet Problems](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg)
+<p align="center">
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg" width="500px" alt="ModelNet Problems"/>
+</p>
 
 The performance of nearly all methods on ModelNet40 lacks consistency. Running the same code multiple times can yield varying results, even with a fixed seed. More details are discussed in [this issue](https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422).
 
 ### Proposed Solution: Point-SkipNet
 
-![Point-SkipNet](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg)
+<p align="center">
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg" width="500px" alt="Point-SkipNet"/>
+</p>
 
 Our proposed **Point-SkipNet** enhances classification accuracy by leveraging a lightweight positional encoding mechanism. This significantly improves performance on the **ModelNet-R** dataset, a refined version of ModelNet40.
 
 ### Architecture Overview
 
-![Point-SkipNet Overview](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg)
+<p align="center">
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg" width="500px" alt="Point-SkipNet Overview"/>
+</p>
 
 ## Prerequisites
 
@@ -67,7 +73,9 @@ Place the following datasets in the `data` folder:
 
 ### Sample and Grouping Strategy
 
-![Sample and Group](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg)
+<p align="center">
+  <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg" width="500px" alt="Sample and Grouping"/>
+</p>
 
 ## Creating ModelNet-R
 
