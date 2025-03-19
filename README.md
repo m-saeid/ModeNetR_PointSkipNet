@@ -1,104 +1,122 @@
 # Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet
 
-<p>
-<a href="https://arxiv.org">
-    <img src="https://img.shields.io/badge/PDF-arXiv-brightgreen" /></a>
-<a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/">
-    <img src="https://img.shields.io/badge/Project-Homepage-red" /></a>
-<a href="https://pytorch.org/">
-    <img src="https://img.shields.io/badge/Framework-PyTorch-orange" /></a>
-<a href="https://github.com/JunweiZheng93/APES/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" /></a>
+<p align="center">
+  <a href="https://arxiv.org/link_paper">
+    <img src="https://img.shields.io/badge/Paper-arXiv-brightgreen" alt="Paper on arXiv"/>
+  </a>
+  <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/">
+    <img src="https://img.shields.io/badge/Project-Homepage-red" alt="Project Homepage"/>
+  </a>
+  <a href="https://pytorch.org/">
+    <img src="https://img.shields.io/badge/Framework-PyTorch-orange" alt="PyTorch Framework"/>
+  </a>
+  <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="Apache 2.0 License"/>
+  </a>
 </p>
 
-## Homepage
-<!-- For more information about the project, please refer to our [project homepage](). -->
-Official implementation of the paper "Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet",</p>
-### accepted as an Oral presentation at IPRIA 2025 🔥
-<br />The paper will be available soon...
+## Overview
 
-![image info](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/ModelNetR_PointSkipNet.jpg)
+This repository contains the official implementation of the paper **"Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet,"** accepted for oral presentation at **IPRIA 2025**. The paper will be available soon.
+
+![Point-SkipNet Overview](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg)
 
 ## Prerequisites
-The latest codes are tested on:<br />
-* Ubuntu 22.04.3 LTS, NVIDIA GeForce RTX 2080 Ti, CUDA 12.0, PyTorch 2.1.1+cu121 and Python 3.10.12<br />
-* Ubuntu 22.04.5 LTS, NVIDIA GeForce RTX 3080 Ti, CUDA 12.2, PyTorch 1.13.1+cu117 and Python 3.10.12
-<!--```shell
-conda install pytorch==2.0.0 pytorch-cuda=11.7 -c pytorch -c nvidia -y
-pip install -r requirements.txt
-```-->
 
-## Data
-Place the following datasets in the data folder. 
-* data/modelnet40_normal_resampled
-* data/modelnet40_ply_hdf5_2048
-<br />
-The "modelnet40_normal_resampled" dataset will be converted to "modelnetR_normal_resampled" and the h5 format of the dataset will be created after executing the code related to creating the dataset that follows.
-If you need the information of the modelnet40_normal_resampled folder, be sure to make a backup copy. because the content of this folder will change and Modelnet40 will be converted to ModelnetR.
+The code has been tested on the following configurations:
 
+- **Configuration 1**:
+  - OS: Ubuntu 22.04.3 LTS
+  - GPU: NVIDIA GeForce RTX 2080 Ti
+  - CUDA: 12.0
+  - PyTorch: 2.1.1+cu121
+  - Python: 3.10.12
+
+- **Configuration 2**:
+  - OS: Ubuntu 22.04.5 LTS
+  - GPU: NVIDIA GeForce RTX 3080 Ti
+  - CUDA: 12.2
+  - PyTorch: 1.13.1+cu117
+  - Python: 3.10.12
+
+## Data Preparation
+
+Place the following datasets in the `data` folder:
+
+- `data/modelnet40_normal_resampled`
+- `data/modelnet40_ply_hdf5_2048`
+
+**Note**: The `modelnet40_normal_resampled` dataset will be converted to `modelnetR_normal_resampled` after executing the dataset creation script. If you need the original `modelnet40_normal_resampled` data, please make a backup, as its content will change during the conversion to ModelNet-R.
 
 ## Inconsistency in ModelNet40 Method Performance
-The performance of nearly all methods on ModelNet40 lacks consistency, as indicated by ([CVMI-Lab/PAConv#9 (comment)(https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422)](https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422)). Running the same codes multiple times yields varying results, even with a fixed seed.
 
+The performance of many methods on ModelNet40 lacks consistency. Running the same code multiple times can yield varying results, even with a fixed seed. This issue has been discussed in the community, as noted in [this comment](https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422).
 
 ## Creating ModelNet-R
-```shell
+
+To create the ModelNet-R dataset:
+
+```bash
 cd Creating_ModelNet-R
-h5=false bash creat_modelnetR.sh  # if you dont need h5 format of modelnet-R (To run Point-SkipNet code, it is not necessary to generate h5 format.)
-h5=true bash creat_modelnetR.sh   # if you need h5 format of modelnet-R
+h5=false bash creat_modelnetR.sh  # If you don't need the h5 format of ModelNet-R
+h5=true bash creat_modelnetR.sh   # If you need the h5 format of ModelNet-R
 ```
-The modelnet-R dataset is created using the modelnet40_normal_resampled dataset, so if you need to recreate the refined dataset(modelnet-R), you must put the modelnet40_normal_resampled dataset in the data folder.
 
-## Train
+**Note**: The ModelNet-R dataset is created using the `modelnet40_normal_resampled` dataset. Ensure this dataset is in the `data` folder before running the script.
 
-Train Point-SkipNet from scratch using:
-```shell
+## Training Point-SkipNet
+
+To train Point-SkipNet from scratch:
+
+```bash
 cd Point-SkipNet
-dataset="modelnetR" bash run_train.sh   # To train on the refined dataset(modeletR)
-dataset="modelnet" bash run_train.sh    # To train on the original dataset(modelnet)
+dataset="modelnetR" bash run_train.sh   # To train on the refined dataset (ModelNet-R)
+dataset="modelnet" bash run_train.sh    # To train on the original dataset (ModelNet)
 ```
 
+## Testing Point-SkipNet
 
-## Test
+To test Point-SkipNet with a checkpoint:
 
-Test Point-SkipNet with checkpoint using:
-```shell
+```bash
 cd Point-SkipNet
-dataset="modelnetR" bash run_test.sh   # To test on the refined dataset(modeletR)
-dataset="modelnet" bash run_test.sh    # To test on the original dataset(modelnet)
+dataset="modelnetR" bash run_test.sh   # To test on the refined dataset (ModelNet-R)
+dataset="modelnet" bash run_test.sh    # To test on the original dataset (ModelNet)
 ```
-* on the refined dataset(modeletR) >>> Test Instance Accuracy: 0.948759, Class Accuracy: 0.937396<br />
-* on the original dataset(modelnet) >>> Test Instance Accuracy: 0.915210, Class Accuracy: 0.900735
-<br />
 
+**Results**:
 
-### The results of the models trained on the ModelNet-R dataset
-<br />
+- On the refined dataset (ModelNet-R):
+  - Test Instance Accuracy: **94.88%**
+  - Class Accuracy: **93.74%**
 
-|     Model     |       OA      |      mAcc     |   Param(M)    |
-| ------------- | ------------- | ------------- | ------------- |
-| PointNet  | 91.39  | 88.79  | 3.47  |
-| PointNet++ (ssg)  | 94.02  | 92.40  | 1.47  |
-| PointNet++ (msg)  | 94.06  | 91.80  | 1.74  |
-| Point-NN  | 84.75  | 77.65  | 0  |
-| DG-CNN  | 94.03  | 92.64  | 1.8  |
-| CurveNet  | 94.12  | 92.65  | 2.04  |
-| PointMLP  | 95.33  | 94.30  | 12.6  |
-| Point-SkipNet(proposed)  | 94.33  | 92.93  | 1.47  |
+- On the original dataset (ModelNet):
+  - Test Instance Accuracy: **91.52%**
+  - Class Accuracy: **90.07%**
 
-<br />
-<br />
+## Benchmark Results on ModelNet-R
+
+|     Model                |       OA (%)     |      mAcc (%)   |   Parameters (M) |
+|--------------------------|------------------|-----------------|------------------|
+| PointNet                 | 91.39            | 88.79           | 3.47             |
+| PointNet++ (SSG)         | 94.02            | 92.40           | 1.47             |
+| PointNet++ (MSG)         | 94.06            | 91.80           | 1.74             |
+| Point-NN                 | 84.75            | 77.65           | 0                |
+| DGCNN                    | 94.03            | 92.64           | 1.8              |
+| CurveNet                 | 94.12            | 92.65           | 2.04             |
+| PointMLP                 | 95.33            | 94.30           | 12.6             |
+| **Point-SkipNet (Proposed)** | **94.33**       | **92.93**       | **1.47**         |
 
 ## Citation
 
-If you are interested in this work, please cite as below:
+If you find this work useful, please cite:
 
-```text
-@modenetr{aaaa2025,
-author={names},
-title={Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet},
-booktitle={Ipria},
-year={2025}
+```bibtex
+@inproceedings{your2025paper,
+  author    = {Your Name and Co-author Name},
+  title     = {Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet},
+  booktitle = {Proceedings of the IPRIA 2025},
+  year      = {2025},
 }
 ```
 
@@ -106,8 +124,9 @@ year={2025}
 
 This project builds upon the foundation of excellent prior work from the research community. Key contributions include:
 
-- **Pointnet++**: [Pointnet++ paper](https://arxiv.org/pdf/1706.02413) by Charles R. Qi, Li Yi, Hao Su, Leonidas J. Guibas
-- **Repository**: [Pointnet++ Implementation](https://github.com/yanx27/Pointnet_Pointnet2_pytorch) by yanx27
-- **Dataset**: Modifications to the [Modelnet40 dataset](https://modelnet.cs.princeton.edu/), originally presented in [3D ShapeNets: A Deep Representation for Volumetric Shapes paper](https://openaccess.thecvf.com/content_cvpr_2015/papers/Wu_3D_ShapeNets_A_2015_CVPR_paper.pdf) by Wu, Zhirong, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao
+- **PointNet++**: [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](https://arxiv.org/pdf/1706.02413) by Charles R. Qi, Li Yi, Hao Su, and Leonidas J. Guibas
+- **Implementation**: [PointNet++ PyTorch Implementation](https://github.com/yanx27/Pointnet_Pointnet2_pytorch) by yanx27
+- **Dataset**: Modifications to the [ModelNet40 dataset](https://modelnet.cs.princeton.edu/), originally presented in [3D ShapeNets: A Deep Representation for Volumetric Shapes](https://openaccess.thecvf.com/content_cvpr_2015/papers/Wu_3D_ShapeNets_A_2015_CVPR_paper.pdf) by Wu et al.
 
 We recognize and appreciate the efforts of these original authors and contributors, without whom this project would not have been possible.
+
