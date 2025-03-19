@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Enhancing 3D Point Cloud Classification</title>
   <style>
-    /* Basic reset */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -34,6 +34,7 @@
       list-style: none;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
     }
     nav ul li {
       margin: 0 15px;
@@ -47,27 +48,46 @@
     nav ul li a:hover {
       color: #007acc;
     }
+    /* Hero Section */
     .hero {
-      background: url('https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg?raw=true') no-repeat center center/cover;
-      height: 60vh;
+      position: relative;
+      background: url('https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg?raw=true') no-repeat center center;
+      background-size: cover;
+      height: 50vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
       text-align: center;
       padding: 0 20px;
     }
-    .hero h2 {
-      font-size: 3em;
-      margin-bottom: 20px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+      z-index: 1;
     }
+    .hero > div {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+    .hero h2 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.3em;
+    }
+    /* Sections */
     section {
       padding: 60px 20px;
       max-width: 1000px;
-      margin: 0 auto;
+      margin: 20px auto;
       background: #fff;
-      margin-bottom: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
@@ -80,10 +100,21 @@
       margin-bottom: 20px;
       font-size: 1.1em;
     }
-    section ul, section ol {
-      margin-left: 20px;
-      margin-bottom: 20px;
+    figure {
+      text-align: center;
+      margin: 30px 0;
     }
+    figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    figure figcaption {
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #555;
+    }
+    /* Card styles for resources */
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -126,6 +157,22 @@
     .link-btn:hover {
       background: #005fa3;
     }
+    /* Responsive YouTube video */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 20px auto;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -154,9 +201,10 @@
     <nav>
       <ul>
          <li><a href="#overview">Overview</a></li>
-         <li><a href="#problem">Challenges</a></li>
+         <li><a href="#challenges">Challenges</a></li>
          <li><a href="#solution">Solution</a></li>
          <li><a href="#experiments">Experiments</a></li>
+         <li><a href="#video">Video</a></li>
          <li><a href="#resources">Resources</a></li>
       </ul>
     </nav>
@@ -171,10 +219,10 @@
 
   <section id="overview">
     <h2>Overview</h2>
-    <p>Welcome to our project, where we address the limitations of the traditional ModelNet40 dataset by introducing the refined <strong>ModelNet‑R</strong> and the innovative, lightweight <strong>Point‑SkipNet</strong> architecture. Our approach aims to deliver state‑of‑the‑art performance in 3D point cloud classification while keeping computational costs low.</p>
+    <p>Welcome to our project! We address the limitations of the traditional ModelNet40 dataset by introducing the refined <strong>ModelNet‑R</strong> and the innovative, lightweight <strong>Point‑SkipNet</strong> architecture. Our approach delivers state‑of‑the‑art performance in 3D point cloud classification with a reduced computational footprint.</p>
   </section>
 
-  <section id="problem">
+  <section id="challenges">
     <h2>Challenges in ModelNet40</h2>
     <p>ModelNet40 has been a cornerstone for 3D point cloud classification, yet it suffers from:</p>
     <ul>
@@ -183,9 +231,10 @@
       <li>Size mismatches that cause classification confusion</li>
       <li>Poor differentiation between similar classes</li>
     </ul>
-    <p align="center">
-      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg?raw=true" width="500px" alt="ModelNet Problems">
-    </p>
+    <figure>
+      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg?raw=true" alt="Challenges in ModelNet40">
+      <figcaption>Figure: Challenges in the ModelNet40 dataset</figcaption>
+    </figure>
   </section>
 
   <section id="solution">
@@ -195,25 +244,32 @@
       <li><strong>ModelNet‑R Dataset:</strong> A refined version of ModelNet40 with corrected labels, removal of 2D artifacts, adjusted size representations, and enhanced class differentiation.</li>
       <li><strong>Point‑SkipNet Architecture:</strong> A lightweight, graph‑based neural network that employs efficient sampling, grouping, and skip connections to maintain high accuracy with reduced computation.</li>
     </ol>
-    <p align="center">
-      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg?raw=true" width="500px" alt="Point‑SkipNet">
-    </p>
-    <p align="center">
-      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg?raw=true" width="500px" alt="Point‑SkipNet Overview">
-    </p>
-    <p align="center">
-      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg?raw=true" width="500px" alt="Sample and Group Module">
-    </p>
+    <figure>
+      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg?raw=true" alt="Point‑SkipNet Architecture">
+      <figcaption>Figure: The Point‑SkipNet architecture</figcaption>
+    </figure>
+    <figure>
+      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg?raw=true" alt="Sample and Group Module">
+      <figcaption>Figure: Sample and Group Module for efficient point sampling</figcaption>
+    </figure>
   </section>
 
   <section id="experiments">
     <h2>Experimental Insights</h2>
-    <p>Our extensive experiments highlight significant improvements in classification accuracy when using the refined ModelNet‑R dataset combined with Point‑SkipNet.</p>
+    <p>Our extensive experiments highlight significant improvements when combining the refined ModelNet‑R dataset with Point‑SkipNet:</p>
     <ul>
-      <li>Point‑SkipNet on ModelNet: Overall Accuracy ~92.29%, Mean Class Accuracy ~89.84%</li>
-      <li>Point‑SkipNet on ModelNet‑R: Overall Accuracy ~94.33%, Mean Class Accuracy ~92.93%</li>
+      <li>On ModelNet: Overall Accuracy ~92.29%, Mean Class Accuracy ~89.84%</li>
+      <li>On ModelNet‑R: Overall Accuracy ~94.33%, Mean Class Accuracy ~92.93%</li>
     </ul>
-    <p>These metrics emphasize the vital role of dataset quality and model efficiency in advancing 3D point cloud classification.</p>
+    <p>These results underscore the vital role of dataset quality and model efficiency in advancing 3D point cloud classification.</p>
+  </section>
+
+  <section id="video">
+    <h2>Video Presentation</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/7ziipjpdth0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p style="text-align:center; margin-top:10px; font-style: italic;">Watch our detailed presentation on YouTube</p>
   </section>
 
   <section id="resources">
@@ -223,7 +279,7 @@
         <img src="https://img.shields.io/badge/Paper-arXiv-brightgreen" alt="Paper">
         <div class="card-content">
           <h3>Read the Paper</h3>
-          <p>Explore the detailed methodology and results in our paper published on arXiv.</p>
+          <p>Explore our detailed methodology and results in our arXiv paper.</p>
           <a class="link-btn" href="https://arxiv.org/link_paper" target="_blank">View Paper</a>
         </div>
       </div>
@@ -231,16 +287,8 @@
         <img src="https://img.shields.io/badge/Project-Homepage-red" alt="Project Homepage">
         <div class="card-content">
           <h3>GitHub Repository</h3>
-          <p>Access the complete code and documentation on our GitHub repository.</p>
+          <p>Access the complete code and documentation on GitHub.</p>
           <a class="link-btn" href="https://github.com/m-saeid/ModeNetR_PointSkipNet/tree/main" target="_blank">Visit GitHub</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://img.shields.io/badge/Video-Presentation-blue" alt="Video">
-        <div class="card-content">
-          <h3>Watch Presentation</h3>
-          <p>View our detailed YouTube presentation explaining the project.</p>
-          <a class="link-btn" href="https://www.youtube.com/watch?v=7ziipjpdth0&list=PLvWl5fdJgzQxaF0v4egv1cdrstl8N7fEM&index=2" target="_blank">Watch Now</a>
         </div>
       </div>
     </div>
