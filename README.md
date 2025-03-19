@@ -234,4 +234,4 @@ Future enhancements include:
 
 ---
 
-This repository offers an integrated approach to improve both dataset quality and model efficiency for 3D point cloud classification. Enjoy exploring the project, and feel free to reach out through the [project homepage](https://github.com/m-saeid/ModeNetR_PointSkipNet/) for any inquiries!
+This repository offers an integrated approach to improve both dataset quality and model efficiency for 3D point cloud classification. Enjoy exploring the project, and feel free to reach out through the [project homepage](https://m-saeid.github.io/ModeNetR_PointSkipNet/) for any inquiries!
