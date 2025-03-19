@@ -13,11 +13,28 @@
   <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="Apache 2.0 License"/>
   </a>
+  <a href="https://www.youtube.com/watch?v=7ziipjpdth0&list=PLvWl5fdJgzQxaF0v4egv1cdrstl8N7fEM&index=2">
+    <img src="https://img.shields.io/badge/Video-Presentation-blue" alt="YouTube Presentation"/>
+  </a>
 </p>
 
 ## Overview
 
-This repository contains the official implementation of the paper **"Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet,"** accepted for oral presentation at **IPRIA 2025**. The paper will be available soon.
+This repository contains the official implementation of the paper **"Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet,"** accepted for oral presentation at **IPRIA 2025**. The paper will be available soon on [arXiv](https://arxiv.org/link_paper).
+
+### Key Challenges in ModelNet40
+
+![ModelNet Problems](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg)
+
+The performance of nearly all methods on ModelNet40 lacks consistency. Running the same code multiple times can yield varying results, even with a fixed seed. More details are discussed in [this issue](https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422).
+
+### Proposed Solution: Point-SkipNet
+
+![Point-SkipNet](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg)
+
+Our proposed **Point-SkipNet** enhances classification accuracy by leveraging a lightweight positional encoding mechanism. This significantly improves performance on the **ModelNet-R** dataset, a refined version of ModelNet40.
+
+### Architecture Overview
 
 ![Point-SkipNet Overview](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet_Overview.jpg)
 
@@ -48,9 +65,9 @@ Place the following datasets in the `data` folder:
 
 **Note**: The `modelnet40_normal_resampled` dataset will be converted to `modelnetR_normal_resampled` after executing the dataset creation script. If you need the original `modelnet40_normal_resampled` data, please make a backup, as its content will change during the conversion to ModelNet-R.
 
-## Inconsistency in ModelNet40 Method Performance
+### Sample and Grouping Strategy
 
-The performance of many methods on ModelNet40 lacks consistency. Running the same code multiple times can yield varying results, even with a fixed seed. This issue has been discussed in the community, as noted in [this comment](https://github.com/CVMI-Lab/PAConv/issues/9#issuecomment-873371422).
+![Sample and Group](https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg)
 
 ## Creating ModelNet-R
 
@@ -83,29 +100,6 @@ cd Point-SkipNet
 dataset="modelnetR" bash run_test.sh   # To test on the refined dataset (ModelNet-R)
 dataset="modelnet" bash run_test.sh    # To test on the original dataset (ModelNet)
 ```
-
-**Results**:
-
-- On the refined dataset (ModelNet-R):
-  - Test Instance Accuracy: **94.88%**
-  - Class Accuracy: **93.74%**
-
-- On the original dataset (ModelNet):
-  - Test Instance Accuracy: **91.52%**
-  - Class Accuracy: **90.07%**
-
-## Benchmark Results on ModelNet-R
-
-|     Model                |       OA (%)     |      mAcc (%)   |   Parameters (M) |
-|--------------------------|------------------|-----------------|------------------|
-| PointNet                 | 91.39            | 88.79           | 3.47             |
-| PointNet++ (SSG)         | 94.02            | 92.40           | 1.47             |
-| PointNet++ (MSG)         | 94.06            | 91.80           | 1.74             |
-| Point-NN                 | 84.75            | 77.65           | 0                |
-| DGCNN                    | 94.03            | 92.64           | 1.8              |
-| CurveNet                 | 94.12            | 92.65           | 2.04             |
-| PointMLP                 | 95.33            | 94.30           | 12.6             |
-| **Point-SkipNet (Proposed)** | **94.33**       | **92.93**       | **1.47**         |
 
 ## Citation
 
