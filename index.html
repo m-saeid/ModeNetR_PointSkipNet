@@ -5,15 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Enhancing 3D Point Cloud Classification</title>
   <style>
-    /* Reset */
+    /* Reset and base styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
-    header { background: #1e1e1e; color: #fff; padding: 20px 0; text-align: center; position: sticky; top: 0; z-index: 1000; }
+    
+    header { 
+      background: #1e1e1e; 
+      color: #fff; 
+      padding: 20px 0; 
+      text-align: center; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000;
+    }
     header h1 { margin-bottom: 10px; font-size: 2.5em; }
     nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
     nav ul li { margin: 0 15px; }
     nav ul li a { color: #fff; text-decoration: none; font-size: 1.1em; transition: color 0.3s; }
     nav ul li a:hover { color: #007acc; }
+
+    /* Sources Section */
+    .sources {
+      background: #fff;
+      padding: 10px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .sources a {
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    
     /* Hero Section */
     .hero { 
       position: relative; 
@@ -26,18 +48,107 @@
       text-align: center; 
       padding: 0 20px; 
     }
-    .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1; }
-    .hero > div { position: relative; z-index: 2; color: #fff; }
+    .hero::before { 
+      content: ""; 
+      position: absolute; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      background-color: rgba(0, 0, 0, 0.5); 
+      z-index: 1; 
+    }
+    .hero > div { 
+      position: relative; 
+      z-index: 2; 
+      color: #fff; 
+    }
     .hero h2 { font-size: 3em; margin-bottom: 10px; }
     .hero p { font-size: 1.3em; }
-    section { padding: 60px 20px; max-width: 1000px; margin: 20px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    section h2 { text-align: center; margin-bottom: 40px; font-size: 2em; }
+    
+    /* Sections */
+    section { 
+      padding: 60px 20px; 
+      max-width: 1000px; 
+      margin: 20px auto; 
+      background: #fff; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    }
+    section h2 { 
+      text-align: center; 
+      margin-bottom: 40px; 
+      font-size: 2em; 
+      border-bottom: 2px solid #eee; 
+      padding-bottom: 10px;
+    }
+    section p, section li { margin-bottom: 20px; font-size: 1.1em; }
+    section pre { background: #f0f0f0; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    
+    /* Two-column layout for Overview */
+    .overview-container {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .overview-text { flex: 1; min-width: 280px; }
+    
+    /* Figures */
     figure { text-align: center; margin: 30px 0; }
     figure img { max-width: 80%; height: auto; border-radius: 4px; }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px auto; }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-    footer { text-align: center; padding: 20px; background: #1e1e1e; color: #fff; font-size: 0.9em; }
-    @media (max-width: 768px) { .overview-container { flex-direction: column; text-align: center; } }
+    .small-image img { width: 50%; }
+    figure figcaption { margin-top: 10px; font-size: 0.95em; color: #555; }
+    
+    /* Video Embed */
+    .video-container {
+      position: relative; 
+      padding-bottom: 56.25%; 
+      height: 0; 
+      overflow: hidden; 
+      max-width: 100%; 
+      margin: 20px auto;
+    }
+    .video-container iframe {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+    }
+    
+    /* Resource Cards */
+    .resource-container {
+      display: flex; 
+      justify-content: space-around; 
+      flex-wrap: wrap; 
+      gap: 20px; 
+      text-align: center; 
+    }
+    .resource-card {
+      background: #fff; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+      padding: 20px; 
+      width: 300px; 
+      transition: transform 0.3s;
+    }
+    .resource-card:hover { transform: translateY(-5px); }
+    .resource-card img { width: 80px; margin-bottom: 10px; }
+    .resource-card h3 { font-size: 1.4em; margin-bottom: 10px; }
+    .resource-card a { text-decoration: none; color: #007acc; font-weight: bold; }
+    .resource-card a:hover { text-decoration: underline; }
+    
+    footer { 
+      text-align: center; 
+      padding: 20px; 
+      background: #1e1e1e; 
+      color: #fff; 
+      font-size: 0.9em; 
+    }
+    
+    @media (max-width: 768px) {
+      .overview-container { flex-direction: column; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -53,23 +164,39 @@
          <li><a href="#training">Training & Testing</a></li>
          <li><a href="#experiments">Experiments</a></li>
          <li><a href="#resources">Resources</a></li>
+         <li><a href="#acknowledgements">Acknowledgements</a></li>
       </ul>
     </nav>
   </header>
 
-  <div class="hero">
-    <div>
-      <h2>ModelNet‑R & Point‑SkipNet</h2>
-      <p>Refining datasets. Enhancing architectures.</p>
-    </div>
+  <!-- Sources Section -->
+  <div class="sources">
+    <a href="https://arxiv.org/link_paper" target="_blank">
+      <img src="https://img.shields.io/badge/Paper-arXiv-brightgreen" alt="Paper on arXiv"/>
+    </a>
+    <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet" target="_blank">
+      <img src="https://img.shields.io/badge/Project-GitHub-red" alt="GitHub Repository"/>
+    </a>
+    <a href="https://www.youtube.com/watch?v=7ziipjpdth0&list=PLvWl5fdJgzQxaF0v4egv1cdrstl8N7fEM&index=2" target="_blank">
+      <img src="https://img.shields.io/badge/Video-YouTube-blue" alt="YouTube Presentation"/>
+    </a>
+    <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet%E2%80%91R%20%26%20Point%E2%80%91SkipNet.pdf" target="_blank">
+      <img src="https://img.shields.io/badge/Presentation-PDF-orange" alt="Presentation PDF"/>
+    </a>
   </div>
 
+  <!-- Overview Section with Two-column Layout -->
   <section id="overview">
     <h2>Overview</h2>
-    <p><strong>ModelNet-R</strong> refines the ModelNet40 dataset by resolving inconsistencies, removing 2D-like data, and improving size normalization.</p>
-    <p><strong>Point-SkipNet</strong> is a lightweight yet powerful 3D classification model that enhances feature extraction using skip connections.</p>
+    <div class="overview-container">
+      <div class="overview-text">
+        <p><strong>ModelNet‑R</strong> is our refined version of the ModelNet40 dataset. By resolving labeling inconsistencies, removing near‑2D data, and improving class differentiation, we provide a cleaner, more reliable benchmark for 3D point cloud classification.</p>
+        <p><strong>Point‑SkipNet</strong> is a lightweight, graph‑based neural network designed to efficiently extract features from 3D point clouds using smart sampling, grouping, and skip connections. This combination achieves state‑of‑the‑art accuracy with lower computational overhead.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Video Presentation Section -->
   <section id="video">
     <h2>Video Presentation</h2>
     <div class="video-container">
@@ -77,6 +204,7 @@
     </div>
   </section>
 
+  <!-- Challenges Section -->
   <section id="challenges">
     <h2>Challenges in ModelNet40</h2>
     <ul>
@@ -84,55 +212,105 @@
       <li>Presence of nearly 2D objects lacking volumetric depth</li>
       <li>Size mismatches causing classification confusion</li>
     </ul>
+    <figure class="small-image">
+      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet_Problems.jpg?raw=true" alt="Challenges in ModelNet40">
+      <figcaption>Figure: Challenges in the ModelNet40 dataset</figcaption>
+    </figure>
   </section>
 
+  <!-- Our Solution Section -->
   <section id="solution">
     <h2>Our Solution: ModelNet‑R & Point‑SkipNet</h2>
-    <p>We introduce:</p>
     <ol>
-      <li><strong>ModelNet‑R Dataset:</strong> A refined dataset with corrected labels, removal of 2D artifacts, and enhanced class differentiation.</li>
-      <li><strong>Point‑SkipNet Architecture:</strong> A lightweight, graph‑based neural network using sampling, grouping, and skip connections.</li>
+      <li><strong>ModelNet‑R Dataset:</strong> A refined dataset featuring corrected labels, removal of 2D artifacts, and enhanced class differentiation.</li>
+      <li><strong>Point‑SkipNet Architecture:</strong> A lightweight neural network that leverages efficient point sampling, grouping, and skip connections for improved feature extraction.</li>
     </ol>
+    <figure>
+      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/Point-SkipNet.jpg?raw=true" alt="Point‑SkipNet Architecture">
+      <figcaption>Figure: The Point‑SkipNet architecture</figcaption>
+    </figure>
+    <figure class="small-image">
+      <img src="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/SampleAndGroup.jpg?raw=true" alt="Sample and Group Module">
+      <figcaption>Figure: Sample and Group Module for efficient point sampling</figcaption>
+    </figure>
   </section>
 
+  <!-- Dataset Section -->
   <section id="dataset">
     <h2>Dataset</h2>
-    <p>Place these datasets in the `data` folder:</p>
+    <p>Place these datasets in the <code>data</code> folder:</p>
     <ul>
-      <li>data/modelnet40_normal_resampled</li>
-      <li>data/modelnet40_ply_hdf5_2048</li>
+      <li><code>data/modelnet40_normal_resampled</code></li>
+      <li><code>data/modelnet40_ply_hdf5_2048</code></li>
     </ul>
+    <p><em>Note:</em> The <code>modelnet40_normal_resampled</code> dataset will be converted to <code>modelnetR_normal_resampled</code> during processing. Please back up the original data if needed.</p>
   </section>
 
+  <!-- Training & Testing Section -->
   <section id="training">
-    <h2>Training & Testing</h2>
-    <p>Train Point-SkipNet from scratch:</p>
+    <h2>Training &amp; Testing</h2>
+    <p>To train Point‑SkipNet:</p>
     <pre><code>cd Point-SkipNet
 dataset="modelnetR" bash run_train.sh</code></pre>
-    <p>Test with a trained checkpoint:</p>
+    <p>To test the model:</p>
     <pre><code>cd Point-SkipNet
 dataset="modelnetR" bash run_test.sh</code></pre>
   </section>
 
+  <!-- Experimental Results Section -->
   <section id="experiments">
     <h2>Experimental Results</h2>
-    <p>Accuracy on datasets:</p>
+    <p>Our experiments demonstrate significant improvements using ModelNet‑R and Point‑SkipNet:</p>
     <ul>
-      <li>ModelNet: OA ~92.29%, mAcc ~89.84%</li>
-      <li>ModelNet-R: OA ~94.33%, mAcc ~92.93%</li>
+      <li><strong>ModelNet:</strong> Overall Accuracy ~92.29%, Mean Class Accuracy ~89.84%</li>
+      <li><strong>ModelNet‑R:</strong> Overall Accuracy ~94.33%, Mean Class Accuracy ~92.93%</li>
     </ul>
   </section>
 
+  <!-- Resources Section -->
   <section id="resources">
     <h2>Resources</h2>
+    <div class="resource-container">
+      <div class="resource-card">
+        <img src="https://img.shields.io/badge/Paper-arXiv-brightgreen" alt="Paper on arXiv">
+        <h3>Read the Paper</h3>
+        <p>Explore the full methodology and results in our publication.</p>
+        <a href="https://arxiv.org/link_paper" target="_blank">View Paper</a>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.shields.io/badge/Project-GitHub-red" alt="GitHub Repository">
+        <h3>GitHub Repository</h3>
+        <p>Access the complete code, dataset, and documentation.</p>
+        <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet" target="_blank">Visit GitHub</a>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.shields.io/badge/Video-YouTube-blue" alt="YouTube Presentation">
+        <h3>YouTube Video</h3>
+        <p>Watch our detailed presentation on YouTube.</p>
+        <a href="https://www.youtube.com/watch?v=7ziipjpdth0&list=PLvWl5fdJgzQxaF0v4egv1cdrstl8N7fEM&index=2" target="_blank">Watch Video</a>
+      </div>
+      <div class="resource-card">
+        <img src="https://img.shields.io/badge/Presentation-PDF-orange" alt="Presentation PDF">
+        <h3>Download Presentation</h3>
+        <p>Get the PDF presentation for an in-depth overview.</p>
+        <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet%E2%80%91R%20%26%20Point%E2%80%91SkipNet.pdf" target="_blank">Download PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Acknowledgements Section -->
+  <section id="acknowledgements">
+    <h2>Acknowledgements</h2>
+    <p>This project builds upon the valuable contributions of the research community. Special thanks to:</p>
     <ul>
-      <li><a href="https://arxiv.org/link_paper" target="_blank">📄 Read the Paper</a></li>
-      <li><a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/tree/main" target="_blank">📂 GitHub Repository</a></li>
+      <li><strong>PointNet++:</strong> Deep Hierarchical Feature Learning on Point Sets in a Metric Space (<a href="https://arxiv.org/pdf/1706.02413" target="_blank">arXiv</a>)</li>
+      <li><strong>GitHub Implementation:</strong> <a href="https://github.com/yanx27/Pointnet_Pointnet2_pytorch" target="_blank">PointNet++ PyTorch</a></li>
+      <li><strong>ModelNet Dataset:</strong> The original benchmark from 3D ShapeNets (<a href="https://openaccess.thecvf.com/content_cvpr_2015/papers/Wu_3D_ShapeNets_A_2015_CVPR_paper.pdf" target="_blank">PDF</a>)</li>
     </ul>
   </section>
 
   <footer>
-    <p>© 2025 ModelNet-R & Point-SkipNet Project. Released under Apache 2.0 License.</p>
+    <p>© 2025 ModelNet-R &amp; Point-SkipNet Project. Released under Apache 2.0 License.</p>
   </footer>
 </body>
 </html>
