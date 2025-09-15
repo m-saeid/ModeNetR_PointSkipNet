@@ -1,7 +1,7 @@
 # Enhancing 3D Point Cloud Classification with ModelNet‑R and Point‑SkipNet
 
 <p align="center">
-  <a href="https://arxiv.org/link_paper">
+  <a href="https://www.arxiv.org/abs/2509.05198">
     <img src="https://img.shields.io/badge/Paper-arXiv-brightgreen" alt="Paper on arXiv"/>
   </a>
   <a href="https://m-saeid.github.io/ModeNetR_PointSkipNet">
@@ -31,7 +31,7 @@
 - **ModelNet‑R Dataset:** A refined version of ModelNet40 that resolves labeling inconsistencies, removes low-quality (almost 2D) data, adjusts size disparities, and sharpens class boundaries.
 - **Point‑SkipNet:** A lightweight graph‑based neural network that leverages efficient sampling, neighborhood grouping, and skip connections to achieve state‑of‑the‑art classification accuracy with a reduced computational footprint.
 
-For full details, please refer to the [paper on arXiv](https://arxiv.org/link_paper).
+For full details, please refer to the [paper on arXiv](https://www.arxiv.org/abs/2509.05198).
 
 ---
 
