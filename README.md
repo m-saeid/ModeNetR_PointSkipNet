@@ -198,11 +198,11 @@ dataset="modelnet" bash run_test.sh    # Test on ModelNet
 If you use this work, please cite:
 
 ```bibtex
-@inproceedings{2025paper,
-  author    = {Mohammad Saeid and Amir Salarpour and Pedram MohajerAnsari},
-  title     = {Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet},
-  booktitle = {Proceedings of IPRIA 2025},
-  year      = {2025},
+@article{saeid2025enhancing,
+  title={Enhancing 3D Point Cloud Classification with ModelNet-R and Point-SkipNet},
+  author={Saeid, Mohammad and Salarpour, Amir and MohajerAnsari, Pedram},
+  journal={arXiv preprint arXiv:2509.05198},
+  year={2025}
 }
 ```
 
