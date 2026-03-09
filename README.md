@@ -10,9 +10,11 @@
   <a href="https://www.youtube.com/watch?v=7ziipjpdth0&list=PLvWl5fdJgzQxaF0v4egv1cdrstl8N7fEM&index=2">
     <img src="https://img.shields.io/badge/Video-Presentation-blue" alt="YouTube Presentation"/>
   </a>
+    <!--
     <a href="https://arxiv.org/pdf/2509.05198" target="_blank">
       <img src="https://img.shields.io/badge/Presentation-PDF-orange" alt="Presentation PDF"/>
     </a>
+    -->
   <!--
   <a href="https://pytorch.org/">
     <img src="https://img.shields.io/badge/Framework-PyTorch-orange" alt="PyTorch Framework"/>
