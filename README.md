@@ -10,7 +10,7 @@
   <a href="https://www.youtube.com/watch?v=7ziipjpdth0&list=PLvWl5fdJgzQxaF0v4egv1cdrstl8N7fEM&index=2">
     <img src="https://img.shields.io/badge/Video-Presentation-blue" alt="YouTube Presentation"/>
   </a>
-    <a href="https://github.com/m-saeid/ModeNetR_PointSkipNet/blob/main/images/ModelNet%E2%80%91R%20%26%20Point%E2%80%91SkipNet.pdf" target="_blank">
+    <a href="https://arxiv.org/pdf/2509.05198" target="_blank">
       <img src="https://img.shields.io/badge/Presentation-PDF-orange" alt="Presentation PDF"/>
     </a>
   <!--
